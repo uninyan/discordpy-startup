@@ -19,16 +19,14 @@ async def ping(ctx):
 # 発言時に実行されるイベントハンドラを定義
 @bot.event
 async def on_message(message):
+    if message.author.bot:
+        return
     if bot.user in message.mentions: # 話しかけられたかの判定
         await reply(message) # 返信する非同期関数を実行
 
 # 返信する非同期関数を定義
 async def reply(message):
-    if message.content == 'a':
-        reply = f'{message.author.mention} aaaaa'
-    else:
-        reply = f'{message.author.mention} ' + message.content
-
+    reply = f'{message.author.mention} 「' + message.content + '」'
     await message.channel.send(reply) # 返信メッセージを送信
 
 bot.run(token)
