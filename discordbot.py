@@ -24,10 +24,11 @@ async def ping(ctx):
 
 # 返信する非同期関数を定義
 async def reply(message):
-    reply = f'{message.author.mention} 呼んだ？' # 返信メッセージの作成
+    if message == 'a':
+        reply = f'{message.author.mention} a'
+    else:
+        reply = f'{message.author.mention} aigai'
+
     await message.channel.send(reply) # 返信メッセージを送信
-
-
-
 
 bot.run(token)
