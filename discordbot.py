@@ -27,7 +27,7 @@ async def reply(message):
     if message.content == 'a':
         reply = f'{message.author.mention} aaaaa'
     else:
-        reply = f'{message.author.mention} ' + message
+        reply = f'{message.author.mention} ' + message.content
 
     await message.channel.send(reply) # 返信メッセージを送信
 
