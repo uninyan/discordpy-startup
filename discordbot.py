@@ -33,11 +33,11 @@ async def reply(message):
     await message.channel.send(reply) # 返信メッセージを送信
 
     if len(s) == 1:
-        reply = '現状' + now
+        reply = now
     elif s[1] == 'LA':
         now['name']     = boss[0]['name']
         now['hp_now']   = boss[0]['hp_max']
-        reply = 'ボス更新' + now
+        reply = now
     else:
         reply = f'{message.author.mention} 「' + message.content + '」'
     await message.channel.send(reply) # 返信メッセージを送信
