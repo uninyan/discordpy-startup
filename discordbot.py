@@ -6,11 +6,13 @@ bot = commands.Bot(command_prefix='/')
 token = os.environ['DISCORD_BOT_TOKEN']
 
 boss = [
-    {'name': 'ワイバーン'   , 'hp_max': 1000},
-    {'name': 'ライライ'     , 'hp_max': 2000},
-    {'name': 'オークチーフ' , 'hp_max': 3000},
+    {'num': 0, 'name': 'ワイバーン'   , 'hp_max': 1000},
+    {'num': 1, 'name': 'ライライ'     , 'hp_max': 2000},
+    {'num': 2, 'name': 'オークチーフ' , 'hp_max': 3000},
 ]
-now = {'name': 'aaa'    , 'hp_now': 9}
+now = {'num': 1, 'name': 'aaa'    , 'hp_now': 9}
+
+count = 0
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -35,9 +37,12 @@ async def reply(message):
     if len(s) == 1:
         reply = now
     elif s[1] == 'LA':
-        now['name']     = boss[0]['name']
-        now['hp_now']   = boss[0]['hp_max']
+        now['name']     = boss[count]['name']
+        now['hp_now']   = boss[count]['hp_max']
         reply = now
+        count += 1
+        if count == len(boss):
+            count = 0
     else:
         reply = f'{message.author.mention} 「' + message.content + '」'
     await message.channel.send(reply) # 返信メッセージを送信
