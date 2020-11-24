@@ -24,7 +24,7 @@ async def on_message(message):
 
 # 返信する非同期関数を定義
 async def reply(message):
-    if message == '@うにbot a':
+    if message.content == 'a':
         reply = f'{message.author.mention} aaaaa'
     else:
         reply = f'{message.author.mention} a'
