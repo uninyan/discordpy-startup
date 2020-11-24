@@ -30,6 +30,8 @@ async def on_message(message):
 async def reply(message):
     s = message.content.split()
     reply = s
+    await message.channel.send(reply) # 返信メッセージを送信
+
     if len(s) == 1:
         reply = '現状' + now
     elif s[1] == 'LA':
