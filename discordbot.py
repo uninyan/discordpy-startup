@@ -29,6 +29,7 @@ async def on_message(message):
 # 返信する非同期関数を定義
 async def reply(message):
     s = message.content.split()
+    reply = s
     if len(s) == 1:
         reply = '現状' + now
     elif s[1] == 'LA':
