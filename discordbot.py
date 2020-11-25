@@ -33,7 +33,9 @@ async def on_message(message):
         return
     if bot.user in message.mentions:    # メンションされた場合
         message_array = message.content.split()
-        if len(message_array) == 1:
+        if message_array[1] == "予約":
+            m = reserve(message)            # 予約
+        elif len(message_array) == 1:
             m = reserve_list(message)       # 予約表示
         elif message_array[1] == "解除":
             m = reserve_delete(message)     # 予約解除
@@ -43,8 +45,6 @@ async def on_message(message):
             m = attack_report(message)      # 残HP報告
         elif message_array[1] == "LA":
             m = last_attack_report(message) # LA報告
-        elif message_array[1] == 1:
-            m = reserve(message)            # 予約
         else:
             m = "ha?"
         await message.channel.send(m) # 返信メッセージを送信
